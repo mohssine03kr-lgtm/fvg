@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MapSection from './MapSection';
-import LiveSection from './LiveSection';
-import BookingTile from './BookingTile';
-import GastronomyTile from './GastronomyTile';
+import MapSection from './MapSection.tsx';
+import LiveSection from './LiveSection.tsx';
+import BookingTile from './BookingTile.tsx';
+import GastronomyTile from './GastronomyTile.tsx';
 
 const DashboardGrid: React.FC = () => {
   return (
