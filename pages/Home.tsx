@@ -1,5 +1,5 @@
 import React from 'react';
-import DashboardGrid from '../components/DashboardGrid.tsx';
+import DashboardGrid from '../components/DashboardGrid';
 
 const Home: React.FC = () => {
   return (

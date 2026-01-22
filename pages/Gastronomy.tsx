@@ -12,6 +12,14 @@ const Gastronomy: React.FC = () => {
   const [recipe, setRecipe] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
+  const getApiKey = () => {
+    try {
+      return (typeof process !== 'undefined' && process.env) ? process.env.API_KEY || '' : '';
+    } catch (e) {
+      return '';
+    }
+  };
+
   const toggleIngredient = (ing: string) => {
     setSelected(prev => prev.includes(ing) ? prev.filter(i => i !== ing) : [...prev, ing]);
   };
@@ -22,7 +30,8 @@ const Gastronomy: React.FC = () => {
     setRecipe(null);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      const apiKey = getApiKey();
+      const ai = new GoogleGenAI({ apiKey });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: `I have selected these local Friuli-Venezia Giulia ingredients: ${selected.join(", ")}. 
