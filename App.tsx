@@ -11,7 +11,7 @@ import Concierge from './components/Concierge.tsx';
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-[#002B32] text-[#F8F8F8]">
+      <div className="min-h-screen flex flex-col relative overflow-x-hidden bg-[#002B32] text-[#F8F8F8] selection:bg-[#D4AF37] selection:text-[#002B32]">
         {/* Decorative Background Glows */}
         <div className="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#D4AF37]/5 blur-[120px] pointer-events-none z-0"></div>
         <div className="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#004D54]/20 blur-[120px] pointer-events-none z-0"></div>

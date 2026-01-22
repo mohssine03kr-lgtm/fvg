@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MapSection from './MapSection.tsx';
 import LiveSection from './LiveSection.tsx';
+import BookingTile from './BookingTile.tsx';
 
 const DashboardGrid: React.FC = () => {
   return (
@@ -40,7 +41,7 @@ const DashboardGrid: React.FC = () => {
       {/* Gastronomy Tile (2-span) */}
       <div className="md:col-span-2 md:row-span-1 glass rounded-[40px] p-6 flex gap-8 items-center border border-white/10 group cursor-pointer overflow-hidden bento-card">
          <div className="w-56 h-full rounded-[30px] overflow-hidden shrink-0 relative">
-            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=85&w=600" className="w-full h-full object-cover parallax-img" />
+            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=85&w=600" className="w-full h-full object-cover parallax-img" alt="Gastronomy" />
             <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
          </div>
          <div className="pr-10">
@@ -50,20 +51,15 @@ const DashboardGrid: React.FC = () => {
          </div>
       </div>
 
-      {/* Luxury Stays Tile */}
-      <div className="md:col-span-1 md:row-span-1 glass rounded-[40px] p-10 border border-white/10 flex flex-col justify-between group cursor-pointer bento-card relative overflow-hidden bg-gradient-to-tr from-prosecco/[0.03] to-transparent">
-        <div className="z-10 relative">
-          <h4 className="serif text-2xl mb-3">ELITE STAYS</h4>
-          <p className="text-[11px] text-white/40 leading-relaxed">The vineyards of Collio await your arrival.</p>
-        </div>
-        <Link to="/destinations" className="z-10 text-[10px] tracking-[0.3em] uppercase font-black text-prosecco mt-auto">DISCOVER</Link>
-        <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-prosecco/10 blur-[80px] group-hover:bg-prosecco/30 transition-all duration-700"></div>
+      {/* Booking Tile Tile */}
+      <div className="md:col-span-1 md:row-span-2">
+        <BookingTile />
       </div>
 
       {/* Style/Boutique Tile */}
       <div className="md:col-span-1 md:row-span-1 relative rounded-[40px] overflow-hidden group bento-card">
-        <img src="https://images.unsplash.com/photo-1548036659-3545976f5fdf?auto=format&fit=crop&q=85&w=800" className="absolute inset-0 w-full h-full object-cover brightness-[0.6] parallax-img" />
-        <div className="absolute inset-0 bg-gradient-to-t from-deep-teal to-transparent opacity-80"></div>
+        <img src="https://images.unsplash.com/photo-1548036659-3545976f5fdf?auto=format&fit=crop&q=85&w=800" className="absolute inset-0 w-full h-full object-cover brightness-[0.6] parallax-img" alt="Boutique" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#002B32] to-transparent opacity-80"></div>
         <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
           <div>
             <span className="text-white/40 text-[9px] tracking-[0.4em] uppercase mb-1 block">Luxury Goods</span>
