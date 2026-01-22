@@ -24,6 +24,8 @@ const App: React.FC = () => {
             <Route path="/destinations" element={<Destinations />} />
             <Route path="/gastronomy" element={<Gastronomy />} />
             <Route path="/events" element={<LiveEvents />} />
+            {/* Fallback to Home for any undefined routes */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
 
