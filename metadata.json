@@ -1,0 +1,8 @@
+{
+  "name": "FVG Luxury Portal",
+  "description": "An ultra-modern luxury travel and lifestyle portal for Friuli-Venezia Giulia, Italy, featuring bento-grid layouts, AI-powered gastronomy, and a dedicated concierge.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
