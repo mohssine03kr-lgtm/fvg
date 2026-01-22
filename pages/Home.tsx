@@ -1,121 +1,133 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6 md:px-12 pb-20">
-      <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-none md:grid-rows-4 gap-6 min-h-[100vh]">
+    <div className="max-w-7xl mx-auto px-6 md:px-12 pb-32">
+      {/* Introduction Header */}
+      <div className="mb-20 flex flex-col items-center text-center mt-8">
+        <span className="text-prosecco tracking-[0.6em] text-[11px] uppercase mb-6 animate-pulse font-bold">Refining the Adriatic Experience</span>
+        <h2 className="serif text-6xl md:text-8xl mb-6 font-light leading-tight">Italian Elegance,<br/><span className="italic font-normal">Reimagined.</span></h2>
+        <div className="w-24 h-px bg-prosecco/30 mb-8"></div>
+        <p className="text-white/50 max-w-xl text-sm leading-relaxed tracking-wide">
+          A digital gateway to the hidden sanctuaries of Friuli-Venezia Giulia. Where alpine majesty meets the sophisticated pulse of Trieste.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 auto-rows-[240px]">
         
         {/* 2x2 Hero Tile - Piazza Unità */}
-        <div className="md:col-span-2 md:row-span-2 relative group rounded-[32px] overflow-hidden glass border border-white/10">
+        <div className="md:col-span-2 md:row-span-2 relative group rounded-[40px] overflow-hidden glass border border-white/10 bento-card">
           <img 
-            src="https://images.unsplash.com/photo-1549421263-524687bc129c?auto=format&fit=crop&q=80&w=1200" 
+            src="https://images.unsplash.com/photo-1549421263-524687bc129c?auto=format&fit=crop&q=95&w=1400" 
             alt="Piazza Unità d'Italia"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            className="absolute inset-0 w-full h-full object-cover parallax-img brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-          <div className="absolute bottom-8 left-8 right-8">
-            <div className="glass px-6 py-4 rounded-3xl border border-white/20 flex items-center gap-4">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
+          <div className="absolute inset-0 p-12 flex flex-col justify-end">
+            <div className="glass px-8 py-5 rounded-full border border-white/20 flex items-center gap-5 mb-10 max-w-lg backdrop-blur-2xl transition-all hover:border-prosecco/40 group/search">
+              <span className="text-prosecco/60 text-lg">⚲</span>
               <input 
                 type="text" 
-                placeholder="Search for Exclusive Experiences..." 
-                className="bg-transparent text-sm w-full outline-none placeholder:text-white/50"
+                placeholder="Inquire about exclusive tours..." 
+                className="bg-transparent text-[13px] w-full outline-none placeholder:text-white/30 text-white font-medium tracking-wide"
               />
-              <div className="w-10 h-10 bg-prosecco rounded-full flex items-center justify-center text-deep-teal cursor-pointer hover:rotate-90 transition">
-                <span className="text-lg">⚲</span>
+            </div>
+            <div>
+              <h1 className="serif text-7xl leading-none mb-3">Trieste</h1>
+              <div className="flex items-center gap-6 mt-4">
+                <span className="text-[11px] tracking-[0.4em] text-prosecco uppercase font-bold">Imperial Gateway</span>
+                <div className="h-px w-24 bg-prosecco/30"></div>
               </div>
             </div>
-            <h1 className="serif text-5xl mt-6">Trieste</h1>
-            <p className="text-sm tracking-widest text-prosecco mt-2 uppercase">The Gateway to Central Europe</p>
           </div>
         </div>
 
-        {/* Interactive Map Tile */}
-        <div className="md:col-span-2 md:row-span-2 glass rounded-[32px] p-8 border border-white/10 flex flex-col justify-between relative group overflow-hidden">
-          <div className="z-10">
-            <h3 className="serif text-3xl mb-4">INTERACTIVE MAP</h3>
-            <p className="text-sm text-white/50 max-w-xs leading-relaxed">
-              The immersive map of the Friuli-Venezia Giulia region and its highlighted luxury key points.
+        {/* 2x2 Interactive Map Tile */}
+        <div className="md:col-span-2 md:row-span-2 glass rounded-[40px] p-12 border border-white/10 flex flex-col justify-between relative group overflow-hidden bento-card">
+          <div className="z-10 relative">
+            <span className="text-prosecco/50 text-[10px] tracking-[0.5em] font-bold uppercase block mb-4">Cartographic Art</span>
+            <h3 className="serif text-5xl mb-6">Regional Gold</h3>
+            <p className="text-sm text-white/40 max-w-xs leading-relaxed tracking-wide">
+              Navigate the golden veins of FVG. From the Carnic Alps to the sparkling Grado Lagoon.
             </p>
-            <button className="mt-8 bg-transparent border border-prosecco px-6 py-2 rounded-full text-[10px] tracking-widest text-prosecco hover:bg-prosecco hover:text-deep-teal transition">
-              EXPLORE FVG REGION
+            <button className="mt-12 group/btn relative overflow-hidden bg-transparent border border-prosecco/30 px-10 py-4 rounded-full text-[11px] tracking-[0.3em] text-prosecco transition-all hover:bg-prosecco hover:text-deep-teal font-bold">
+              EXPLORE GEOGRAPHY
             </button>
           </div>
           
-          {/* Abstract SVG Map Representation */}
-          <div className="absolute bottom-4 right-4 w-64 h-64 opacity-60 pointer-events-none transition-transform group-hover:scale-110">
+          {/* Stylized Golden Map */}
+          <div className="absolute -bottom-16 -right-16 w-[450px] h-[450px] opacity-30 pointer-events-none transition-all duration-1000 group-hover:scale-105 group-hover:opacity-50 group-hover:rotate-2">
             <svg viewBox="0 0 200 200" className="w-full h-full stroke-prosecco fill-none">
-               <path d="M40,160 Q60,140 100,150 T160,130 Q180,110 170,70 T130,40 Q90,20 50,50 T40,100 Z" strokeWidth="0.5" strokeDasharray="5,2" />
-               <circle cx="100" cy="150" r="3" fill="#D4AF37" className="animate-pulse" />
-               <circle cx="160" cy="130" r="3" fill="#D4AF37" className="animate-pulse [animation-delay:1s]" />
-               <circle cx="50" cy="50" r="3" fill="#D4AF37" className="animate-pulse [animation-delay:0.5s]" />
-               <path d="M100,150 L160,130 M160,130 L130,40 M130,40 L50,50" strokeWidth="0.2" opacity="0.5" />
+               <path d="M30,170 Q50,150 90,160 T170,140 Q190,120 180,60 T120,30 Q80,10 40,40 T30,110 Z" strokeWidth="0.6" strokeDasharray="8,4" />
+               <circle cx="100" cy="155" r="5" fill="#D4AF37" className="animate-pulse" />
+               <circle cx="165" cy="135" r="5" fill="#D4AF37" className="animate-pulse [animation-delay:0.8s]" />
+               <circle cx="50" cy="45" r="5" fill="#D4AF37" className="animate-pulse [animation-delay:1.5s]" />
+               <circle cx="120" cy="80" r="5" fill="#D4AF37" className="animate-pulse [animation-delay:2.2s]" />
+               <path d="M100,155 L165,135 M165,135 L120,80 M120,80 L50,45" strokeWidth="0.2" strokeDasharray="3,3" opacity="0.4" />
             </svg>
           </div>
         </div>
 
         {/* FVG Live Tile */}
-        <div className="md:col-span-1 md:row-span-1 glass rounded-[32px] p-6 border border-white/10 flex flex-col justify-between">
-          <div>
-            <span className="text-[10px] tracking-widest text-white/50 uppercase">FVG LIVE</span>
-            <div className="waveform mt-4">
-              {[...Array(12)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="waveform-bar" 
-                  style={{ animationDelay: `${i * 0.1}s`, height: `${Math.random() * 30 + 10}px` }}
-                ></div>
-              ))}
+        <div className="md:col-span-1 md:row-span-1 glass rounded-[40px] p-10 border border-white/10 flex flex-col justify-between bento-card bg-gradient-to-br from-white/[0.02] to-transparent">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] tracking-[0.4em] text-white/50 uppercase font-black">PULSE</span>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+              <span className="text-[9px] text-red-500 font-bold">LIVE</span>
             </div>
           </div>
-          <Link to="/events" className="text-prosecco text-xs flex items-center gap-2 hover:gap-4 transition-all">
-            WATCH LIVE UPDATES <span>→</span>
+          <div className="flex items-center gap-2 h-14">
+            {[...Array(16)].map((_, i) => (
+              <div 
+                key={i} 
+                className="waveform-bar flex-grow" 
+                style={{ animationDelay: `${i * 0.06}s`, height: `${Math.random() * 30 + 10}px` }}
+              ></div>
+            ))}
+          </div>
+          <Link to="/events" className="text-prosecco text-[11px] tracking-[0.2em] font-black flex items-center gap-3 group/link">
+            REAL-TIME <span className="group-hover/link:translate-x-2 transition-transform">→</span>
           </Link>
         </div>
 
-        {/* Luxury Stays Tile */}
-        <div className="md:col-span-1 md:row-span-1 glass rounded-[32px] p-6 border border-white/10 flex flex-col justify-between group cursor-pointer hover:border-prosecco/30 transition">
-          <div>
-            <h4 className="serif text-xl">LUXURY STAYS:</h4>
-            <p className="text-sm text-white/50 mt-2">Collio Vineyard Retreats.</p>
-            <p className="text-xs text-prosecco mt-1 italic">Book your private escape.</p>
-          </div>
-          <Link to="/destinations" className="text-[10px] tracking-widest uppercase text-white/40 hover:text-prosecco">VIEW ALL STAYS</Link>
+        {/* Gastronomy Tile (2-span) */}
+        <div className="md:col-span-2 md:row-span-1 glass rounded-[40px] p-6 flex gap-8 items-center border border-white/10 group cursor-pointer overflow-hidden bento-card">
+           <div className="w-56 h-full rounded-[30px] overflow-hidden shrink-0 relative">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=85&w=600" className="w-full h-full object-cover parallax-img" />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
+           </div>
+           <div className="pr-10">
+              <h4 className="serif text-3xl mb-3 leading-tight">Gastronomy AI</h4>
+              <p className="text-[13px] text-white/40 leading-relaxed tracking-wide">Michelin-grade synthesis of regional terroir.</p>
+              <Link to="/gastronomy" className="inline-block mt-6 text-prosecco text-[11px] tracking-[0.3em] font-black uppercase border-b border-prosecco/20 pb-1 hover:border-prosecco transition-all">Curate Experience</Link>
+           </div>
         </div>
 
-        {/* Luxury Shopping Tile */}
-        <div className="md:col-span-1 md:row-span-2 relative rounded-[32px] overflow-hidden group">
-          <img src="https://images.unsplash.com/photo-1548036659-3545976f5fdf?auto=format&fit=crop&q=80&w=800" className="absolute inset-0 w-full h-full object-cover brightness-50 transition-transform duration-700 group-hover:scale-110" />
-          <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+        {/* Luxury Stays Tile */}
+        <div className="md:col-span-1 md:row-span-1 glass rounded-[40px] p-10 border border-white/10 flex flex-col justify-between group cursor-pointer bento-card relative overflow-hidden bg-gradient-to-tr from-prosecco/[0.03] to-transparent">
+          <div className="z-10 relative">
+            <h4 className="serif text-2xl mb-3">ELITE STAYS</h4>
+            <p className="text-[11px] text-white/40 leading-relaxed">The vineyards of Collio await your arrival.</p>
+          </div>
+          <Link to="/destinations" className="z-10 text-[10px] tracking-[0.3em] uppercase font-black text-prosecco mt-auto">DISCOVER</Link>
+          <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-prosecco/10 blur-[80px] group-hover:bg-prosecco/30 transition-all duration-700"></div>
+        </div>
+
+        {/* Style/Boutique Tile */}
+        <div className="md:col-span-1 md:row-span-1 relative rounded-[40px] overflow-hidden group bento-card">
+          <img src="https://images.unsplash.com/photo-1548036659-3545976f5fdf?auto=format&fit=crop&q=85&w=800" className="absolute inset-0 w-full h-full object-cover brightness-[0.6] parallax-img" />
+          <div className="absolute inset-0 bg-gradient-to-t from-deep-teal to-transparent opacity-80"></div>
+          <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
             <div>
-              <h4 className="serif text-2xl">LUXURY SHOPPING</h4>
-              <p className="text-sm text-white/80 mt-2">Via San Nicolò Boutiques.</p>
+              <span className="text-white/40 text-[9px] tracking-[0.4em] uppercase mb-1 block">Luxury Goods</span>
+              <h4 className="serif text-2xl">BOUTIQUE</h4>
             </div>
-            <button className="bg-prosecco text-deep-teal text-[10px] tracking-widest font-bold px-6 py-2 rounded-full w-fit hover:scale-105 transition">
-              EXPLORE BRANDS
+            <button className="bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[10px] tracking-[0.2em] font-black px-8 py-3 rounded-full w-fit hover:bg-prosecco hover:text-deep-teal transition-all shadow-xl">
+              CURATE STYLE
             </button>
           </div>
-          <div className="absolute bottom-0 left-0 w-full bg-black/40 backdrop-blur-md p-4 flex gap-4 overflow-hidden whitespace-nowrap text-[8px] tracking-[0.2em]">
-             {['GUCCI', 'PRADA', 'ARMANI', 'VERSACE', 'FENDI'].map(b => <span key={b}>{b}</span>)}
-          </div>
-        </div>
-
-        {/* Vineyard Image Tile */}
-        <div className="md:col-span-1 md:row-span-1 rounded-[32px] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b0ca7ef?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover hover:scale-110 transition duration-700" />
-        </div>
-
-        {/* Gastronomy Tile */}
-        <div className="md:col-span-2 md:row-span-1 glass rounded-[32px] p-6 flex gap-6 items-center border border-white/10 group cursor-pointer overflow-hidden">
-           <div className="w-32 h-full rounded-2xl overflow-hidden shrink-0">
-              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=300" className="w-full h-full object-cover transition-transform group-hover:scale-110" />
-           </div>
-           <div>
-              <h4 className="serif text-2xl">GASTRONOMY:</h4>
-              <p className="text-sm text-white/50 mt-1">Culinary Masterpieces.</p>
-              <Link to="/gastronomy" className="inline-block mt-3 text-prosecco text-xs hover:underline decoration-prosecco underline-offset-4">Explore the taste of FVG →</Link>
-           </div>
         </div>
 
       </div>

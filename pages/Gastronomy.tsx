@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { GoogleGenAI } from '@google/genai';
 
 const INGREDIENTS = [
-  "Prosciutto di San Daniele", "Montasio Cheese", "Polenta", "Collio White Wine",
-  "Truffles", "Asparagus of Tavagnacco", "Wild Game", "Sea Bass", "Gubana Cake"
+  "Prosciutto di San Daniele", "Montasio Cheese", "Polenta Taragna", 
+  "Collio Ribolla Gialla", "Black Winter Truffle", "Asparagus of Tavagnacco", 
+  "Friulian Sea Bass", "Gubana", "Sclopit Herbs"
 ];
 
 const Gastronomy: React.FC = () => {
@@ -25,15 +25,18 @@ const Gastronomy: React.FC = () => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: `Create an elite, luxury Italian recipe using these FVG ingredients: ${selected.join(", ")}. Include a sophisticated title and wine pairing.`,
+        contents: `I have selected these local Friuli-Venezia Giulia ingredients: ${selected.join(", ")}. 
+                   Please create an ultra-luxury, Michelin-star recipe that reflects the elegance of Friulian cuisine. 
+                   Include a poetic description, technical preparation steps, and a sophisticated local wine pairing (e.g., from Collio or Colli Orientali). 
+                   Format with elegant headers.`,
         config: {
-            systemInstruction: "You are a Michelin-star chef specializing in Friuli-Venezia Giulia cuisine. Provide gourmet, high-end recipes with elegant formatting."
+            systemInstruction: "You are the Executive Chef of a Michelin 3-star restaurant in Friuli, Italy. Your tone is sophisticated, poetic, and authoritative. Use elegant formatting for your recipes."
         }
       });
-      setRecipe(response.text || "Something went wrong.");
+      setRecipe(response.text || "The culinary muses are silent. Please try again.");
     } catch (e) {
       console.error(e);
-      setRecipe("The kitchen is currently closed for maintenance. Please try again later.");
+      setRecipe("Our grand kitchen is momentarily closed. Please consult the concierge.");
     } finally {
       setLoading(false);
     }
@@ -41,23 +44,24 @@ const Gastronomy: React.FC = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 pb-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
         
         <div>
-          <h2 className="serif text-6xl text-prosecco mb-8">Culinary <br/>Alchemy</h2>
-          <p className="text-white/60 mb-12 text-sm leading-relaxed max-w-md">
-            Select authentic ingredients from our region and let our Culinary AI curate a bespoke masterpiece for your table.
+          <span className="text-prosecco tracking-[0.4em] text-[10px] uppercase mb-4 block">Haute Cuisine AI</span>
+          <h2 className="serif text-6xl md:text-7xl text-white mb-8 leading-tight">Culinary<br/><span className="italic">Alchemy.</span></h2>
+          <p className="text-white/50 mb-12 text-sm leading-relaxed max-w-md">
+            The flavors of Friuli are ancient and diverse. Select your preferred local ingredients and allow our AI Chef to synthesize a bespoke gourmet experience for your palate.
           </p>
 
-          <div className="flex flex-wrap gap-3 mb-12">
+          <div className="grid grid-cols-2 gap-4 mb-12">
             {INGREDIENTS.map(ing => (
               <button
                 key={ing}
                 onClick={() => toggleIngredient(ing)}
-                className={`px-6 py-2 rounded-full text-xs tracking-widest transition-all border ${
+                className={`text-left px-6 py-4 rounded-2xl text-[10px] tracking-[0.1em] transition-all border ${
                   selected.includes(ing) 
-                    ? 'bg-prosecco border-prosecco text-deep-teal' 
-                    : 'glass border-white/10 text-white/60 hover:border-prosecco/50'
+                    ? 'bg-prosecco border-prosecco text-deep-teal font-bold shadow-lg shadow-prosecco/20' 
+                    : 'glass border-white/5 text-white/50 hover:border-white/20'
                 }`}
               >
                 {ing.toUpperCase()}
@@ -68,36 +72,46 @@ const Gastronomy: React.FC = () => {
           <button 
             onClick={generateRecipe}
             disabled={loading || selected.length === 0}
-            className="bg-prosecco text-deep-teal px-12 py-4 rounded-full font-bold text-sm tracking-[0.2em] hover:scale-105 transition disabled:opacity-50 disabled:scale-100"
+            className="group relative bg-prosecco text-deep-teal px-12 py-5 rounded-full font-bold text-xs tracking-[0.3em] overflow-hidden transition-all hover:scale-105 disabled:opacity-50 disabled:scale-100"
           >
-            {loading ? 'CURATING...' : 'GENERATE MASTERPIECE'}
+            <span className="relative z-10">{loading ? 'CURATING MASTERPIECE...' : 'REVEAL THE RECIPE'}</span>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
           </button>
         </div>
 
-        <div className="glass rounded-[40px] p-10 min-h-[500px] border border-white/10 relative overflow-hidden">
+        <div className="glass rounded-[48px] p-12 min-h-[600px] border border-white/10 relative overflow-hidden flex flex-col">
           {!recipe && !loading && (
-            <div className="h-full flex flex-col items-center justify-center text-center">
-               <div className="w-20 h-20 mb-6 border border-prosecco/20 rounded-full flex items-center justify-center text-prosecco/40 text-4xl">
+            <div className="flex-grow flex flex-col items-center justify-center text-center px-10">
+               <div className="w-24 h-24 mb-8 border border-prosecco/20 rounded-full flex items-center justify-center text-prosecco/30 text-5xl">
                  ✧
                </div>
-               <p className="serif text-white/30 text-xl italic">Choose your ingredients to begin the culinary journey...</p>
+               <p className="serif text-white/30 text-2xl italic leading-relaxed">The table is set. <br/>Awaiting your choice of ingredients...</p>
             </div>
           )}
+          
           {loading && (
-            <div className="h-full flex flex-col items-center justify-center text-center">
-              <div className="w-12 h-12 border-2 border-prosecco border-t-transparent rounded-full animate-spin mb-6"></div>
-              <p className="serif text-prosecco text-xl animate-pulse">Designing your menu...</p>
+            <div className="flex-grow flex flex-col items-center justify-center text-center">
+              <div className="w-16 h-16 border-2 border-prosecco border-t-transparent rounded-full animate-spin mb-8"></div>
+              <p className="serif text-prosecco text-2xl animate-pulse tracking-widest">Designing the Experience...</p>
             </div>
           )}
+          
           {recipe && (
-            <div className="animate-in fade-in slide-in-from-right-10 prose-invert max-w-none">
-              <div className="whitespace-pre-wrap text-sm text-white/80 leading-relaxed font-light">
+            <div className="animate-in fade-in slide-in-from-bottom-10 flex-grow prose prose-invert max-w-none">
+               <div className="flex items-center gap-4 mb-8">
+                  <div className="h-px flex-grow bg-prosecco/20"></div>
+                  <span className="serif text-prosecco text-sm italic">Bespoke Creation</span>
+                  <div className="h-px flex-grow bg-prosecco/20"></div>
+               </div>
+              <div className="whitespace-pre-wrap text-[13px] text-white/80 leading-loose font-light tracking-wide">
                 {recipe}
               </div>
             </div>
           )}
-          {/* Subtle Glow Background */}
-          <div className="absolute top-[-20%] right-[-20%] w-[60%] h-[60%] bg-prosecco/5 blur-[100px] pointer-events-none"></div>
+          
+          {/* Subtle Ambient Glow */}
+          <div className="absolute -top-1/4 -right-1/4 w-[70%] h-[70%] bg-prosecco/5 blur-[120px] pointer-events-none"></div>
+          <div className="absolute -bottom-1/4 -left-1/4 w-[70%] h-[70%] bg-white/5 blur-[120px] pointer-events-none"></div>
         </div>
 
       </div>
