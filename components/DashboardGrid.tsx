@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MapSection from './MapSection';
-import LiveSection from './LiveSection';
+import MapSection from './MapSection.tsx';
+import LiveSection from './LiveSection.tsx';
 
 const DashboardGrid: React.FC = () => {
   return (

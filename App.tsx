@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Home from './pages/Home';
-import Destinations from './pages/Destinations';
-import Gastronomy from './pages/Gastronomy';
-import LiveEvents from './pages/LiveEvents';
-import Concierge from './components/Concierge';
+import Navbar from './components/Navbar.tsx';
+import Footer from './components/Footer.tsx';
+import Home from './pages/Home.tsx';
+import Destinations from './pages/Destinations.tsx';
+import Gastronomy from './pages/Gastronomy.tsx';
+import LiveEvents from './pages/LiveEvents.tsx';
+import Concierge from './components/Concierge.tsx';
 
 const App: React.FC = () => {
   return (
